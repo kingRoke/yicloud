@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/microservice-zipkin-server/microservice-zipkin-server.iml" filepath="$PROJECT_DIR$/microservice-zipkin-server/microservice-zipkin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-admin/microservice-admin.iml" filepath="$PROJECT_DIR$/microservice-admin/microservice-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-eureka/microservice-eureka.iml" filepath="$PROJECT_DIR$/microservice-eureka/microservice-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-feign/microservice-feign.iml" filepath="$PROJECT_DIR$/microservice-feign/microservice-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservice-provider/microservice-provider.iml" filepath="$PROJECT_DIR$/microservice-provider/microservice-provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud.iml" filepath="$PROJECT_DIR$/spring-cloud.iml" />
     </modules>
   </component>

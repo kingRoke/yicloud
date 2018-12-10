@@ -1,0 +1,68 @@
+
+
+#端口号配置
+server:
+  port: 8764
+
+#注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+#    preferIpAddress: true
+    lease-expiration-duration-in-seconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+#    appname: service-feign-appname    #配置应用名称  优先级低
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#配置应用名称  优先级高
+spring:
+  application:
+    name: microservice-admin
+  security:
+    user:
+      name: 'admin'
+      password: 'admin'
+  # 邮件通知配置
+  mail:
+    host: smtp.qq.com
+    username: 450456683@qq.com
+    password: vwiveukbqrpgbhhc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+  boot:
+    admin:
+      notify:
+        mail:
+          from: 450456683@qq.com
+          to: 450456683@qq.com
+          enabled: true
+          ignore-changes: UNKNOWN:UP,UNKNOWN:OFFLINE,OFFLINE:UP
+
+logging:
+  path: D:\work\logs\service-admin #打印存放日志的路径
+  level:
+    com.gaofei: info #包名下日志的级别
+
+
+
+
+
+

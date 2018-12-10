@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: "client"
+      password: "client"
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+  zipkin:
+    base-url: http://localhost:9411/ # 指定了 Zipkin 服务器的地址
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+#    hostname: localhost
+    #    preferIpAddress: true
+    lease-expiration-duration-in-seconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+
+  client:
+    # 表示是否注册自身到eureka服务器
+    register-with-eureka: true
+    # 是否从eureka上获取注册信息
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

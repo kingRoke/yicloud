@@ -1,0 +1,56 @@
+#端口号配置
+server:
+  port: 8082
+
+#注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    registry-fetch-interval-seconds: 5 #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+  instance:
+#    preferIpAddress: true   #实例名称显示IP配置
+    lease-renewal-interval-in-seconds: 10 #表示eureka client发送心跳给server端的频率，默认为30秒
+    health-check-url-path: /actuator/health #健康检查的地址（依赖spring-boot-starter-actuator）
+#    appname: service-feign-appname    #配置应用名称  优先级低
+
+#负载均衡配置
+ribbon:
+  eureka:
+    enabled: true
+
+#断路器配置
+feign:
+  hystrix:
+    enabled: true
+
+#配置应用名称  优先级高
+spring:
+  application:
+    name: microservice-feign
+  security:
+    user:
+      name: "client"
+      password: "client"
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0 # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
+  zipkin:
+    base-url: http://localhost:9411/ # 指定了 Zipkin 服务器的地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  path: D:\work\logs\service-consumer #打印存放日志的路径
+  level:
+    com.gaofei: info #包名下日志的级别
